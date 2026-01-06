@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError, ApiResponse } from "../types/types";
+import logger from "../utils/logger";
 
 export function errorHandler(
   err: Error,
@@ -7,6 +8,13 @@ export function errorHandler(
   res: Response,
   next: NextFunction
 ) {
+  logger.error("Error occured", {
+    error: err.message,
+    stack: err.stack,
+    path: req.path,
+    method: req.method,
+  });
+
   if (err instanceof AppError) {
     const response: ApiResponse<null> = {
       success: false,
