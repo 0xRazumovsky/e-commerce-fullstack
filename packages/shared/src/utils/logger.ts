@@ -6,7 +6,7 @@ export const logger = winston.createLogger({
     winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
     winston.format.errors({ stack: true }),
     winston.format.splat(),
-    winston.format.json()
+    winston.format.json(),
   ),
   defaultMeta: { service: process.env.SERVICE_NAME || "unknown" },
   transports: [
@@ -16,7 +16,7 @@ export const logger = winston.createLogger({
         winston.format.printf(({ timestamp, level, message, ...meta }) => {
           const metaStr = Object.keys(meta).length ? JSON.stringify(meta) : "";
           return `${timestamp} [${level}] ${message} ${metaStr}`;
-        })
+        }),
       ),
     }),
   ],
@@ -24,15 +24,7 @@ export const logger = winston.createLogger({
 
 if (process.env.NODE_ENV !== "test") {
   logger.add(
-    new winston.transports.File({
-      filename: "logs/error.log",
-      level: "error",
-    })
+    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
   );
-  logger.add(
-    new winston.transports.File({
-      filename: "logs/combined.log",
-    })
-  );
+  logger.add(new winston.transports.File({ filename: "logs/combined.log" }));
 }
-

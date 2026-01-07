@@ -1,16 +1,14 @@
-import {Pool} from "pg";
+import { Pool } from "pg";
 import { logger } from "@e-commerce/shared/index.js";
 
-export const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-});
+export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 export async function initDatabase() {
-    try {
-        const client = await pool.connect();
+  try {
+    const client = await pool.connect();
 
-        // Users table
-        await client.query(`
+    // Users table
+    await client.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
                 email VARCHAR(255) UNIQUE NOT NULL,
@@ -23,8 +21,8 @@ export async function initDatabase() {
             )
             `);
 
-        // Sessions table
-        await client.query(`
+    // Sessions table
+    await client.query(`
             CREATE TABLE IF NOT EXISTS sessions (
                 id UUID PRIMARY KET DEFAULT gen_random_uuid(),
                 user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -34,12 +32,12 @@ export async function initDatabase() {
             )
             `);
 
-        client.release();
-        logger.info("Database initialized successfully");
-    } catch (error) {
-        logger.error("Database initialization error", {
-            error: error instanceof Error ? error.message: "Unknown error",
-        });
-        throw error;
-    }
+    client.release();
+    logger.info("Database initialized successfully");
+  } catch (error) {
+    logger.error("Database initialization error", {
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+    throw error;
+  }
 }

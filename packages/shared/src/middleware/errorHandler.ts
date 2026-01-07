@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError, ApiResponse } from "../types/types.js";
-import logger from "../utils/logger.js";
+import { logger } from "../utils/logger.js";
 
 export function errorHandler(
   err: Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   logger.error("Error occured", {
     error: err.message,

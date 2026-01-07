@@ -31,10 +31,7 @@ export const createOrderSchema = z.object({
   id: z.string(),
   userId: z.string(),
   items: z.array(
-    z.object({
-      productId: z.string(),
-      quantity: z.number().int().positive(),
-    })
+    z.object({ productId: z.string(), quantity: z.number().int().positive() }),
   ),
   shippingAddress: z.object({
     street: z.string(),
@@ -51,12 +48,15 @@ export const createPaymentSchema = z.object({
   paymentMethodId: z.string(),
 });
 
-export function validate<T extends z.ZodType>(schema: T, data: unknown): z.infer<T> {
+export function validate<T extends z.ZodType>(
+  schema: T,
+  data: unknown,
+): z.infer<T> {
   try {
     return schema.parse(data);
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error("Validation error:", error );
+      throw new Error("Validation error:", error);
     }
     throw error;
   }

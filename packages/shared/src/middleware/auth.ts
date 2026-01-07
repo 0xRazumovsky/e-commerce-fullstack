@@ -14,7 +14,7 @@ declare global {
 export function authMiddleware(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
     const token = req.headers.authorization?.split(" ")[1];
@@ -35,17 +35,9 @@ export function authMiddleware(
 export function generateToken(
   userId: string,
   email: string,
-  role: string
+  role: string,
 ): string {
-  return jwt.sign(
-    {
-      sub: userId,
-      email,
-      role,
-    },
-    process.env.JWT_SECRET!,
-    {
-      expiresIn: process.env.JWT_EXPIRATION || "24h",
-    } as jwt.SignOptions
-  );
+  return jwt.sign({ sub: userId, email, role }, process.env.JWT_SECRET!, {
+    expiresIn: process.env.JWT_EXPIRATION || "24h",
+  } as jwt.SignOptions);
 }
