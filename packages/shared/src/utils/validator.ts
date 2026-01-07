@@ -51,9 +51,9 @@ export const createPaymentSchema = z.object({
   paymentMethodId: z.string(),
 });
 
-export function validate<T>(schema: z.ZodType, data: unknown): T {
+export function validate<T extends z.ZodType>(schema: T, data: unknown): z.infer<T> {
   try {
-    return schema.parse(data) as T;
+    return schema.parse(data);
   } catch (error) {
     if (error instanceof Error) {
       throw new Error("Validation error:", error );
