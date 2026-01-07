@@ -2,12 +2,16 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+     "baseUrl": ".",
+     "paths": {
+      "@e-commerce/shared/*": ["packages/shared/src/*"],
+      "@e-commerce/user-service": ["packages/user-service/src/*"]
+     },
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
+    "moduleResolution": "nodenext",
     "target": "esnext",
     "types": [],
     // For nodejs:

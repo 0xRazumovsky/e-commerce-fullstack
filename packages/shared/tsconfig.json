@@ -1,11 +1,10 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     // File Layout
-     "rootDir": "./src",
-     "outDir": "./dist",
-     
+    "rootDir": "src",
+    "outDir": "dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -19,6 +18,7 @@
 
     // Other Outputs
     "sourceMap": true,
+    "composite": true,
     "declaration": true,
     "declarationMap": true,
 
