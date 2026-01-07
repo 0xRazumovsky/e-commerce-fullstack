@@ -1,9 +1,9 @@
 {
-  "name": "@e-commerce/product-service",
+  "name": "@e-commerce/cart-service",
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
@@ -12,11 +12,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
-    "@e-commerce/shared": "file:../shared",
+    "@ecommerce/shared": "file:../shared",
+    "axios": "^1.13.2",
     "express": "^5.2.1",
-    "mongodb": "^7.0.0"
+    "redis": "^5.10.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
