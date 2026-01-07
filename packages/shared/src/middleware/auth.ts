@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { AppError, JwtPayload } from "../types/types";
+import { AppError, JwtPayload } from "../types/types.js";
 
 declare global {
   namespace Express {

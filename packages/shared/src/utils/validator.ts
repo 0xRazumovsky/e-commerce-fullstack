@@ -50,3 +50,14 @@ export const createPaymentSchema = z.object({
   amount: z.number().positive(),
   paymentMethodId: z.string(),
 });
+
+export function validate<T>(schema: z.ZodType, data: unknown): T {
+  try {
+    return schema.parse(data) as T;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error("Validation error:", error );
+    }
+    throw error;
+  }
+}
