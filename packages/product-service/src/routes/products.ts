@@ -8,9 +8,9 @@ import {
   logger,
 } from "@e-commerce/shared";
 
-export const router = Router();
+export const productRoutes = Router();
 
-router.get(
+productRoutes.get(
   "/products",
   asyncHandler(async (req: Request, res: Response) => {
     const db = (req as any).db;
@@ -49,7 +49,7 @@ router.get(
   }),
 );
 
-router.get(
+productRoutes.get(
   "/products/:id",
   asyncHandler(async (req: Request, res: Response) => {
     const db = (req as any).db;
@@ -69,7 +69,7 @@ router.get(
   }),
 );
 
-router.post(
+productRoutes.post(
   "/products",
   asyncHandler(async (req: Request, res: Response) => {
     const db = (req as any).db;
