@@ -46,3 +46,59 @@ export interface JwtPayload {
   iat: number;
   exp: number;
 }
+
+export interface CartItem {
+  productId: string;
+  quantity: number;
+  price: number;
+}
+
+export interface Cart {
+  userId: string;
+  items: CartItem[];
+  total: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface OrderItem {
+  productId: string;
+  quantity: number;
+  price: number;
+}
+
+export interface Address {
+  street: string;
+  city: string;
+  state?: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface Order {
+  id: string;
+  userId: string;
+  items: OrderItem[];
+  total: number;
+  status:
+    | "pending"
+    | "confirmed"
+    | "processing"
+    | "shipped"
+    | "delivered"
+    | "cancelled";
+  shippingAddress: Address;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Payment {
+  id: string;
+  orderId: string;
+  amount: number;
+  currency: string;
+  status: "pending" | "completed" | "failed" | "refunded";
+  stripePaymentIntentId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}

@@ -8,12 +8,12 @@ import {
   logger,
 } from "packages/shared";
 
-export const router = Router();
+export const cartRoutes = Router();
 
 const CART_KEY = (userId: string) => `cart:${userId}`;
 const PRODUCT_CACHE_KEY = (productId: string) => `product:${productId}`;
 
-router.get(
+cartRoutes.get(
   "/cart/:userId",
   asyncHandler(async (req: Request, res: Response) => {
     const redis = (req as any).redis;
@@ -34,7 +34,7 @@ router.get(
   }),
 );
 
-router.post(
+cartRoutes.post(
   "/cart/:userId/items",
   asyncHandler(async (req: Request, res: Response) => {
     const redis = (req as any).redis;
@@ -112,7 +112,7 @@ router.post(
   }),
 );
 
-router.delete(
+cartRoutes.delete(
   "/cart/:userId",
   asyncHandler(async (req: Request, res: Response) => {
     const redis = (req as any).redis;
