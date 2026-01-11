@@ -7,9 +7,9 @@ import {
 } from "@e-commerce/shared/index.js";
 import { pool } from "../config/database.js";
 
-export const router = Router();
+export const userRoutes = Router();
 
-router.get(
+userRoutes.get(
   "/:id",
   authMiddleware,
   asyncHandler(async (req: Request, res: Response) => {
@@ -32,7 +32,7 @@ router.get(
   }),
 );
 
-router.put(
+userRoutes.put(
   "/:id",
   authMiddleware,
   asyncHandler(async (req: Request, res: Response) => {

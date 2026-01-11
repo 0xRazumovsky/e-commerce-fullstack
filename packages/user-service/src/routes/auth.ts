@@ -11,9 +11,9 @@ import {
 } from "@e-commerce/shared/index.js";
 import { pool } from "../config/database.js";
 
-export const router = Router();
+export const authRoutes = Router();
 
-router.post(
+authRoutes.post(
   "/register",
   asyncHandler(async (req: Request, res: Response) => {
     const data = validate(userRegistrationSchema, req.body);
@@ -53,7 +53,7 @@ router.post(
   }),
 );
 
-router.post(
+authRoutes.post(
   "/login",
   asyncHandler(async (req: Request, res: Response) => {
     const data = validate(userLoginSchema, req.body);
