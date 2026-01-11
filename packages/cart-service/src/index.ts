@@ -24,6 +24,8 @@ app.get("/health", (req: Request, res: Response) => {
 
 app.use("/cart", authMiddleware, cartRoutes);
 
+app.use(errorHandler);
+
 const server = app.listen(PORT, () => {
   logger.info(`Cart service running on port ${PORT}`);
 });
