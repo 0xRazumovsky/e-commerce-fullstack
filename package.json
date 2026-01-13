@@ -1,20 +1,31 @@
 {
   "name": "e-com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Production-grade microservices e-commerce platform",
   "main": "index.js",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "npm install",
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspaces --if-present",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "@types/node": "^25.0.8",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^4.0.17",
+    "@vitest/ui": "^4.0.17",
+    "supertest": "^7.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.17",
+    "vitest-mock-extended": "^3.1.0"
   }
 }
