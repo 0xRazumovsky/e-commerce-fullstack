@@ -1,0 +1,25 @@
+{
+  "name": "notification-service",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@e-commerce/shared": "file:../shared",
+    "@sendgrid/mail": "^8.1.6",
+    "amqplib": "^0.10.9",
+    "twilio": "^5.11.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

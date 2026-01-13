@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getRedisClient } from "../redis";
+import { getRedisClient } from "../config/redis";
 import { AppError, CartItem, Cart, logger } from "packages/shared/dist";
 
 export class CartService {
-  #PRODUCT_SERVICE_URL =
+  private PRODUCT_SERVICE_URL =
     process.env.PRODUCT_SERVICE_URL || "http://localhost:3002";
 
   async getCart(userId: string): Promise<Cart | null> {
@@ -35,9 +35,9 @@ export class CartService {
       const redis = getRedisClient();
       const cartKey = `cart:${userId}`;
 
-      // Verify product
+      // Verify product exists
       const productResponse = await axios.get(
-        `${this.#PRODUCT_SERVICE_URL}/products/${productId}`,
+        `${this.PRODUCT_SERVICE_URL}/products/${productId}`,
       );
       const product = productResponse.data;
 
@@ -71,7 +71,7 @@ export class CartService {
       );
       cart.updatedAt = new Date().toISOString();
 
-      await redis.setEx(cartKey, 86400, JSON.stringify(cart));
+      await redis.setEx(cartKey, 86400, JSON.stringify(cart)); // 24h expiry
       logger.info("Item added to cart", { userId, productId, quantity });
 
       return cart;
@@ -107,7 +107,7 @@ export class CartService {
         await redis.setEx(cartKey, 86400, JSON.stringify(cart));
       }
 
-      logger.info("Item removed from cart", { userId: productId });
+      logger.info("Item removed from cart", { userId, productId });
       return cart;
     } catch (error) {
       if (error instanceof AppError) throw error;
