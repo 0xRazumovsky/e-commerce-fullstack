@@ -9,7 +9,7 @@ import {
   asyncHandler,
 } from "@e-commerce/shared";
 import orderRoutes from "./routes/orders";
-import { handlePaymentCompleted } from "./events/payment";
+import { handlePaymentCompleted } from "@e-commerce/shared";
 
 const app = express();
 const PORT = process.env.SERVICE_PORT || 3004;

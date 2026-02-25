@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getRedisClient } from "../config/redis";
-import { AppError, CartItem, Cart, logger } from "packages/shared/dist";
+import { AppError, Cart, logger } from "packages/shared";
 
 export class CartService {
   private PRODUCT_SERVICE_URL =

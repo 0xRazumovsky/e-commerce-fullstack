@@ -11,21 +11,19 @@
     "install": "npm install",
     "build": "npm run build --workspaces --if-present",
     "dev": "npm run dev --workspaces --if-present",
-    "test": "vitest"
+    "test": "vitest",
+    "docker:up": "docker compose up",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "docker:build": "docker compose build"
   },
   "keywords": [],
-  "author": "",
+  "author": "0xRazumovsky",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^25.0.8",
-    "@types/supertest": "^6.0.3",
-    "@vitest/coverage-v8": "^4.0.17",
-    "@vitest/ui": "^4.0.17",
-    "supertest": "^7.2.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.17",
-    "vitest-mock-extended": "^3.1.0"
+    "typescript": "^5.9.3"
   }
 }

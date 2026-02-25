@@ -2,18 +2,18 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-     "baseUrl": ".",
-     "paths": {
+    "baseUrl": ".",
+    "paths": {
       "@e-commerce/shared/*": ["packages/shared/src/*"],
       "@e-commerce/user-service": ["packages/user-service/src/*"]
-     },
+    },
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "target": "esnext",
-    "types": [],
+    "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -43,6 +43,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }

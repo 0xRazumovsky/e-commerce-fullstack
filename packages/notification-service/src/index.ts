@@ -4,8 +4,8 @@ import {
   logger,
   disconnectRabbitMQ,
 } from "@e-commerce/shared";
-import emailService from "./services/emailService";
-import smsService from "./services/smsService";
+import emailService from "./services/emailService.js";
+import smsService from "./services/smsService.js";
 
 async function startConsumer() {
   try {
